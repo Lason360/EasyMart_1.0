@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "633627717122",
+    "project_id": "easymart-a5eff",
+    "storage_bucket": "easymart-a5eff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633627717122:android:3df59035fdbf008a0e011b",
+        "android_client_info": {
+          "package_name": "com.example.easy_mart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZV3oftRTXQYHXnVonoGpLxljcgP5YVeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
