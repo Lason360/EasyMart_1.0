@@ -10,8 +10,19 @@ class DatabaseService {
   late final CollectionReference _invenRef;
 
   DatabaseService() {
-    _invenRef = _firestore.collection(inventory_collection_ref)
+    _invenRef = _firestore.collection(inventory_collection_ref).withConverter<inventoryItem>{
+      FromFirestore: (snapshots, _) => inventoryItem.fromJson(
+        snapshots.data()!,
+      ),
+      ToFirestore: (inventoryItem, _) => inventoryItem.toJson()};
+    }
+
+  Stream<QuerySnapshot> getInventoryItems(){
+    return _invenRef.snapshots();
   }
 
+  void addInven(inventoryItem item) async{
+    _invenRef.add(item);
+  }
 }
-//hi
+
