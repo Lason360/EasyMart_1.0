@@ -20,12 +20,12 @@ class _LoginPageState extends State<LoginPage> {
 
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
-            stops: [0.05, 0.3, 0.5, 0.9],
+            stops: const [0.05, 0.3, 0.5, 0.9],
             colors: [
 
             Colors.grey[900]!,
             Colors.green[900]!,
-            Colors.green!,
+            Colors.green,
             Colors.lightGreenAccent[400]!,
             ],
           ),
@@ -40,40 +40,73 @@ class _LoginPageState extends State<LoginPage> {
             decoration: const InputDecoration(
               labelText: 'Email',
               hintText: 'Enter email',
-              suffixIcon: const Icon(Icons.email),
-              border: const OutlineInputBorder(),
+              suffixIcon: Icon(Icons.email),
+              border: OutlineInputBorder(),
+              fillColor: Colors.amber,
             ),
             onChanged: (String emailValue){
               setState(() {
                 email = emailValue;
-                print(email);
               });
             },
           )
-        ],)),
-        SizedBox(height: 30),
+        ],
+        )
+        ),
+        const SizedBox(height: 30),
         Form(child: Column(children: [
           TextFormField(
             keyboardType: TextInputType.visiblePassword,
             decoration: const InputDecoration(
               labelText: 'Password',
               hintText: 'Enter Your Password',
-              suffixIcon: Icon(Icons.email),
+              suffixIcon: Icon(Icons.key),
               border: OutlineInputBorder(),
             ),
-            onChanged: (String password){
+            onChanged: (String passwordValue){
               setState(() {
-                password = password;
-                print(password);
+                password = passwordValue;
               });
             },
           )
-        ],))
+        ],)
+        ),
         
-
         ],
       ),
-    )
-    );
+    ),
+     floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            onPressed: () {
+              // Add your logic for the first floating action button here
+            },
+            heroTag: "LoginButton",
+            tooltip: 'Login',
+            label: const Text("Login"),
+            backgroundColor: Colors.lightGreenAccent[400],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
+          SizedBox(height: 16), 
+          // Adjust the spacing between the floating action buttons
+          FloatingActionButton.extended(
+            onPressed: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context)=>const LoginPage()));// Add your logic for the second floating action button here
+            },
+            heroTag: "RegisterButton",
+            tooltip: 'Register',
+            label: const Text("Register"),
+            backgroundColor: Colors.lightGreenAccent[400],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      );
   }
 }
